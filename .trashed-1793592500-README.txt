@@ -1,0 +1,9 @@
+Irfan Online Services Website
+
+এই ফোল্ডারের index.html-ই সম্পূর্ণ website।
+মোবাইল/কম্পিউটারে ব্রাউজারে খুললে website দেখা যাবে।
+
+Order Now ফর্ম WhatsApp নম্বর 8001941082-এ order message তৈরি করে।
+ঠিকানা: ধামাখালী 50 বিঘার মোড়
+
+নোট: HTML ফর্মে নির্বাচিত ফাইল সরাসরি WhatsApp-এ attach হয় না; customer-কে WhatsApp-এ ফাইলটি আলাদা করে পাঠাতে বলা হয়েছে।
