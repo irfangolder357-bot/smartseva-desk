@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SMARTSEVA DESK — Cyber Café & Online Services</title>
+<meta name="description" content="Online cyber café services, PVC cards, photo printing, forms, documents and digital services.">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">DS</span><div><b>SMARTSEVA DESK</b><small>Cyber Café • PVC Card • Online Services</small></div></div>
+  <button class="menu" onclick="document.body.classList.toggle('nav-open')">☰</button>
+  <nav><a href="#home">হোম</a><a href="#services">সার্ভিস</a><a href="#products">প্রোডাক্ট</a><a href="#how">কীভাবে অর্ডার</a><a href="#contact">যোগাযোগ</a></nav>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-copy">
+    <span class="pill">⚡ SMARTSEVA DESK • দ্রুত • নিরাপদ • সহজ অর্ডার</span>
+    <h1>আপনার সব <em>Cyber Café</em> সার্ভিস, এক জায়গায়</h1>
+    <p>অনলাইন ফর্ম, PVC/ID কার্ড, ফটো, প্রিন্টিং ও ডিজিটাল সার্ভিস—মোবাইল থেকেই অর্ডার করুন।</p>
+    <div class="hero-actions"><a class="btn primary" href="#services">সার্ভিস দেখুন</a><a class="btn ghost" href="#order">এখনই অর্ডার</a></div>
+    <div class="trust"><span>✓ Mobile Friendly</span><span>✓ Order Tracking</span><span>✓ Location Capture</span></div>
+  </div>
+  <div class="hero-card"><div class="mapdot">⌖</div><h3>আপনার লোকেশন</h3><p>অর্ডারের সময় অনুমতি দিলে আপনার বর্তমান location আপনার order-এর সঙ্গে পাঠানো হবে।</p><button class="btn dark" onclick="getLocation()">লোকেশন দিন</button><small id="locStatus">Location not shared</small></div>
+</section>
+
+<section class="stats"><div><b>30+</b><span>Services</span></div><div><b>7 Days</b><span>Order Support</span></div><div><b>100%</b><span>Digital Ordering</span></div><div><b>Fast</b><span>Response</span></div></section>
+
+<section id="services" class="section"><div class="section-head"><div><span class="eyebrow">OUR SERVICES</span><h2>যে কাজ দরকার, সেটাই অর্ডার করুন</h2></div><input id="search" placeholder="🔎 সার্ভিস খুঁজুন..." oninput="filterServices()"></div>
+<div id="serviceGrid" class="grid"></div></section>
+
+<section id="products" class="section alt"><div class="price-banner">PVC Card <b>₹50 / পিস</b></div><div class="section-head"><div><span class="eyebrow">POPULAR PRODUCTS</span><h2>প্রিন্টিং ও PVC প্রোডাক্ট</h2></div></div>
+<div class="product-grid">
+  <article class="product"><div class="mock-card idcard">IDENTITY CARD<br><small>NAME • ID • PHOTO</small></div><h3>PVC ID Card</h3><p>Durable plastic card printing</p><button onclick="selectService('PVC ID Card')">অর্ডার করুন →</button></article>
+  <article class="product"><div class="mock-card dl">DRIVING<br>LICENCE</div><h3>Driving Licence PVC</h3><p>Card printing service</p><button onclick="selectService('Driving Licence PVC')">অর্ডার করুন →</button></article>
+  <article class="product"><div class="mock-card aadhaar">AADHAAR<br><small>DEMO DESIGN</small></div><h3>Document/PVC Print</h3><p>Customer-provided documents</p><button onclick="selectService('Document / PVC Print')">অর্ডার করুন →</button></article>
+  <article class="product"><div class="mock-frame">YOUR<br>PHOTO</div><h3>Photo Framing</h3><p>Photo print + frame</p><button onclick="selectService('Photo Framing')">অর্ডার করুন →</button></article>
+</div></section>
+
+<section id="how" class="section"><span class="eyebrow">HOW IT WORKS</span><h2>৩ ধাপে অর্ডার</h2><div class="steps"><div><b>01</b><h3>Service বাছুন</h3><p>আপনার প্রয়োজনের service-এ ক্লিক করুন।</p></div><div><b>02</b><h3>তথ্য দিন</h3><p>নাম, ফোন, প্রয়োজনীয় বিবরণ ও ফাইল দিন।</p></div><div><b>03</b><h3>Location পাঠান</h3><p>অনুমতি দিলে order-এর সঙ্গে location পাঠানো হবে।</p></div></div></section>
+
+<section id="order" class="section order-section"><div class="order-box"><div><span class="eyebrow">PLACE ORDER</span><h2>এখনই অর্ডার দিন</h2><p>আপনার তথ্য দিয়ে submit করুন।</p></div>
+<form id="orderForm" onsubmit="submitOrder(event)">
+<label>আপনার নাম<input id="name" required placeholder="পূর্ণ নাম"></label>
+<label>মোবাইল নম্বর<input id="phone" required inputmode="tel" placeholder="10 digit mobile number"></label>
+<label>Service<select id="service" required></select></label>
+<label>অতিরিক্ত তথ্য<textarea id="details" rows="4" placeholder="কী কাজ করতে হবে লিখুন..."></textarea></label>
+<label>ফাইল / ছবি (ঐচ্ছিক)<input id="file" type="file" accept="image/*,.pdf"></label>
+<div class="loc-row"><button type="button" class="btn ghost" onclick="getLocation()">📍 Current Location</button><span id="orderLoc">Not captured</span></div>
+<input type="hidden" id="lat"><input type="hidden" id="lng">
+<button class="btn primary wide" type="submit">অর্ডার সাবমিট করুন →</button>
+<p class="privacy">🔒 প্রয়োজনীয় তথ্য শুধু অর্ডারটি সম্পন্ন করার কাজে ব্যবহার করুন। সরকারি পরিচয়পত্রের OTP/PIN/password কখনও শেয়ার করবেন না।</p>
+</form></div></section>
+
+<section id="contact" class="contact"><div><span class="eyebrow">CONTACT</span><h2>আপনার Digital Service Partner</h2><p>দোকানের ঠিকানা, WhatsApp নম্বর ও সময় এখানে বসিয়ে দিন।</p></div><div class="contact-card"><p>📍 আপনার দোকানের ঠিকানা</p><p>📞 +91 XXXXXXXXXX</p><p>🕘 সকাল 9টা – রাত 9টা</p><a class="btn primary" href="#order">অর্ডার করুন</a></div></section>
+</main>
+<footer>© 2026 SMARTSEVA DESK • Cyber Café & Online Services</footer>
+<script src="/app.js"></script>
+</body></html>
